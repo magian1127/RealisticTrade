@@ -99,9 +99,13 @@ namespace RealisticTrade
                 {
                     if (map.IsPlayerHome)
                     {
+                        IncidentParms incidentParms = new IncidentParms
+                        {
+                            target = map
+                        };
                         factionWeightSize += ButtonsSize(1);
                         var factionsWithWeight = Find.FactionManager.AllFactions.Where((Faction f) =>
-                        incidentWorker.FactionCanBeGroupSource(f, map, true))
+                        incidentWorker.FactionCanBeGroupSource(f, incidentParms, true))
                             .Select(x => (x, TryResolveParmsGeneral_Patch.GetWeight(map, x))).OrderByDescending(x => x.Item2).Take(5).ToList();
                         for (var i = 0; i < factionsWithWeight.Count; i++)
                         {
@@ -214,9 +218,13 @@ namespace RealisticTrade
                 {
                     if (map.IsPlayerHome)
                     {
+                        IncidentParms incidentParms = new IncidentParms
+                        {
+                            target = map
+                        };
                         factionWeightSection.Label(map.Parent.LabelCap);
                         var factionsWithWeight = Find.FactionManager.AllFactions.Where((Faction f) =>
-                        incidentWorker.FactionCanBeGroupSource(f, map, true))
+                        incidentWorker.FactionCanBeGroupSource(f, incidentParms, true))
                             .Select(x => (x, TryResolveParmsGeneral_Patch.GetWeight(map, x))).OrderByDescending(x => x.Item2).Take(5).ToList();
                         for (var i = 0; i < factionsWithWeight.Count; i++)
                         {

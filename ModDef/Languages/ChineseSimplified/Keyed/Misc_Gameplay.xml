@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<RT.GeneralSettings>通用设置</RT.GeneralSettings>
+	<RT.ResetValues>重置设置值</RT.ResetValues>
+	<RT.WorldSize>世界大小 ({0})： </RT.WorldSize>
+	<RT.ScaleValuesByWorldCoverage>根据世界覆盖率缩放数值</RT.ScaleValuesByWorldCoverage>
+	<RT.MaxTravelPeriodForNPCCaravans>NPC商队最大旅行周期： </RT.MaxTravelPeriodForNPCCaravans>
+	<RT.BaseTradeIncidentCountPerYear>每年基础贸易事件数量：{0}</RT.BaseTradeIncidentCountPerYear>
+	<RT.BaseTradeIncidentSpawnChance>基础贸易事件生成几率：{0}</RT.BaseTradeIncidentSpawnChance>
+	
+	<RT.BaseMinimumTimeBetweenCaravansArrival>商队到达的基础最短间隔时间：{0}</RT.BaseMinimumTimeBetweenCaravansArrival>
+	<RT.FinalMinimumTimeBetweenCaravansArrival>商队到达的最终最短间隔时间：{0}</RT.FinalMinimumTimeBetweenCaravansArrival>
+	<RT.FinalTradeIncidentCountPerYear>每年最终贸易事件数量：{0}</RT.FinalTradeIncidentCountPerYear>
+	<RT.FinalTradeIncidentSpawnChance>最终贸易事件生成几率：{0}</RT.FinalTradeIncidentSpawnChance>
+	
+	<RT.FactionTraderSpawnChanceWeightsPerColonyWealth>根据殖民地财富的贸易事件生成几率修正</RT.FactionTraderSpawnChanceWeightsPerColonyWealth>
+	<RT.FactionSpawnChancePerColonyWealth>财富为 {0} 时的贸易事件生成几率修正：</RT.FactionSpawnChancePerColonyWealth>
+	<RT.TradeIncidentSpawnChanceModifiers>贸易事件生成几率修正：</RT.TradeIncidentSpawnChanceModifiers>
+	<RT.FactionTraderSpawnChanceWeightsPerBaseCount>距离玩家定居点 {0} 天旅行范围内的总派系定居点数量对贸易事件生成几率的修正</RT.FactionTraderSpawnChanceWeightsPerBaseCount>
+	<RT.FactionSpawnChancePerBaseCount>总派系定居点数量为 {0} 时的贸易事件生成几率：</RT.FactionSpawnChancePerBaseCount>
+	<RT.FactionTraderSpawnChanceWeightsPerSeasonImpact>根据季节变化的贸易事件生成几率修正</RT.FactionTraderSpawnChanceWeightsPerSeasonImpact>
+	<RT.FactionSpawnChancePerSeasonImpact>在 {0} 时的贸易事件生成几率修正：</RT.FactionSpawnChancePerSeasonImpact>
+
+	<RT.TradeFactionSpawnChanceModifiers>贸易派系生成几率修正：</RT.TradeFactionSpawnChanceModifiers>
+	<RT.FactionTraderSpawnChanceWeightsPerRelation>根据关系调整的贸易派系选择权重</RT.FactionTraderSpawnChanceWeightsPerRelation>
+	<RT.FactionSpawnChancePerRelation>关系为 {0} 时的贸易派系选择权重：</RT.FactionSpawnChancePerRelation>
+	<RT.FactionTraderSpawnChanceWeightsPerTravelDayCount>根据距离最近派系定居点的旅行天数的贸易派系生成几率修正</RT.FactionTraderSpawnChanceWeightsPerTravelDayCount>
+	<RT.FactionSpawnChancePerTravelDayCount>距离最近派系定居点旅行时长为 {0} 天时的贸易派系选择权重：</RT.FactionSpawnChancePerTravelDayCount>
+	<RT.FactionTraderSpawnChanceWeightsPerFactionBaseDensity>距离玩家定居点 {0} 天旅行范围内的派系基地密度对贸易派系生成几率的影响</RT.FactionTraderSpawnChanceWeightsPerFactionBaseDensity>
+	<RT.FactionSpawnChancePerFactionBaseDensity>基地密度为 {0} 时的贸易派系选择权重：</RT.FactionSpawnChancePerFactionBaseDensity>
+	<RT.Impact>频率影响 ({0})</RT.Impact>
+	<RT.Base>基础 {0}：{1}</RT.Base>
+	<RT.Final>最终 {0}：{1}</RT.Final>
+	<RT.MostProbablyFactionsForTrading>最有可能进行贸易的派系是：</RT.MostProbablyFactionsForTrading>
+	<RT.FactionWithFinalWeight>{0}. {1}，最终权重：{2}</RT.FactionWithFinalWeight>
+	
+</LanguageData>

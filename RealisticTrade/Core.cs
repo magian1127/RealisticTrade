@@ -131,8 +131,8 @@ namespace RealisticTrade
             {
                 return false;
             }
-            if (parms.faction == null && !__instance.CandidateFactions(map).TryRandomElementByWeight(x => GetWeight(map, x), out parms.faction) 
-                && !__instance.CandidateFactions(map, desperate: true).TryRandomElementByWeight(x => GetWeight(map, x), out parms.faction))
+            if (parms.faction == null && !__instance.CandidateFactions(parms).TryRandomElementByWeight(x => GetWeight(map, x), out parms.faction)
+                && !__instance.CandidateFactions(parms, desperate: true).TryRandomElementByWeight(x => GetWeight(map, x), out parms.faction))
             {
                 return false;
             }

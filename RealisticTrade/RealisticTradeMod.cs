@@ -15,7 +15,7 @@ namespace RealisticTrade
 {
     class RealisticTradeMod : Mod
     {
-        public const string ModName = "Realistic Trade";
+        public const string ModName = "Realistic Trade Forked";
         public static RealisticTradeSettings settings;
         public RealisticTradeMod(ModContentPack pack) : base(pack)
         {
