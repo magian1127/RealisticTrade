@@ -46,7 +46,7 @@ namespace RealisticTrade
                 if (lastLogTime == -1 || Find.TickManager.TicksGame - lastLogTime >= GenDate.TicksPerDay)
                 {
                     lastLogTime = Find.TickManager.TicksGame;
-                    Log.Message($"FINAL_TRADER_PER_YEAR Base chance of trader arrival is {oldValue} per year, final modified chance is {__result}");
+                    Log.Message($"[Realistic Trade] FINAL_TRADER_PER_YEAR Base chance of trader arrival is {oldValue} per year, final modified chance is {__result}");
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace RealisticTrade
                 if (lastLogTime == -1 || Find.TickManager.TicksGame - lastLogTime >= GenDate.TicksPerDay)
                 {
                     lastLogTime = Find.TickManager.TicksGame;
-                    Log.Message($"FINAL_TRADER_PER_YEAR Base incident count per year is {instance.Props.baseIncidentsPerYear}, now it's {instance.Props.baseIncidentsPerYear * modifier}");
+                    Log.Message($"[Realistic Trade] FINAL_TRADER_PER_YEAR Base incident count per year is {instance.Props.baseIncidentsPerYear}, now it's {instance.Props.baseIncidentsPerYear * modifier}");
                 }
                 return modifier;
             }
@@ -177,9 +177,9 @@ namespace RealisticTrade
             var settlementsOfFaction = map.GetTradingTracker().FriendlySettlementsNearby().Where(x => x.settlement.Faction == faction).ToList();
             var factionBaseCount = settlementsOfFaction.Count;
             var goodwill = faction.GoodwillWith(map.ParentFaction);
-            Log.Message("Checking map " + map + " for faction " + faction);
-            Log.Message($"{faction} - Amount of nearby settlements of {faction} in {RealisticTradeMod.settings.maxTravelDistancePeriodForTrading} travel days range is {factionBaseCount}");
-            Log.Message($"{faction} - Goodwill of {faction} with {map.ParentFaction} is {goodwill}");
+            Log.Message($"[Realistic Trade] Checking map {map} for faction {faction}");
+            Log.Message($"[Realistic Trade] {faction} - Amount of nearby settlements of {faction} in {RealisticTradeMod.settings.maxTravelDistancePeriodForTrading} travel days range is {factionBaseCount}");
+            Log.Message($"[Realistic Trade] {faction} - Goodwill of {faction} with {map.ParentFaction} is {goodwill}");
 
             var factionBaseCountWeight = RealisticTradeMod.settings.factionBaseDensityBonusCurve.Evaluate(factionBaseCount);
             if (RealisticTradeMod.settings.scaleValuesByWorldSize)
@@ -192,7 +192,7 @@ namespace RealisticTrade
             if (settlementsOfFaction.Any())
             {
                 var nearestDayTravelDuration = settlementsOfFaction.Select(x => x.daysToArrive).OrderBy(x => x).First();
-                Log.Message($"Faction: {faction} - Travel time days from the nearest settlement is {nearestDayTravelDuration}");
+                Log.Message($"[Realistic Trade] Faction: {faction} - Travel time days from the nearest settlement is {nearestDayTravelDuration}");
                 var travelDayWeight = RealisticTradeMod.settings.dayTravelBonusCurve.Evaluate(nearestDayTravelDuration);
                 if (RealisticTradeMod.settings.scaleValuesByWorldSize)
                 {
@@ -258,9 +258,9 @@ namespace RealisticTrade
             if (lastLogTime == -1 || Find.TickManager.TicksGame - lastLogTime >= GenDate.TicksPerDay)
             {
                 lastLogTime = Find.TickManager.TicksGame;
-                Log.Message($"FINAL_TRADER_PER_YEAR map wealth in {this.map} is {mapWealth}, factionWeight: {RealisticTradeMod.settings.colonyWealthAttractionBonusCurve.Evaluate(mapWealth)}");
-                Log.Message($"FINAL_TRADER_PER_YEAR Count of neutral/ally bases (faction relatinship is >=0) around {this.map} is {count}, factionWeight: {RealisticTradeMod.settings.totalSettlementCountBonusCurve.Evaluate(count)}");
-                Log.Message($"FINAL_TRADER_PER_YEAR Season is {season}, factionWeight: {RealisticTradeMod.settings.seasonImpactBonusCurve.Evaluate((int)season)}");
+                Log.Message($"[Realistic Trade] FINAL_TRADER_PER_YEAR map wealth in {this.map} is {mapWealth}, factionWeight: {RealisticTradeMod.settings.colonyWealthAttractionBonusCurve.Evaluate(mapWealth)}");
+                Log.Message($"[Realistic Trade] FINAL_TRADER_PER_YEAR Count of neutral/ally bases (faction relatinship is >=0) around {this.map} is {count}, factionWeight: {RealisticTradeMod.settings.totalSettlementCountBonusCurve.Evaluate(count)}");
+                Log.Message($"[Realistic Trade] FINAL_TRADER_PER_YEAR Season is {season}, factionWeight: {RealisticTradeMod.settings.seasonImpactBonusCurve.Evaluate((int)season)}");
             }
             return modifier;
         }
@@ -292,6 +292,11 @@ namespace RealisticTrade
             var settlements = Find.World.worldObjects.SettlementBases.Where(x => validator(x)).ToList();
             foreach (var settlement in settlements)
             {
+                if (settlement.Tile.Layer != map.Tile.Layer)
+                {
+                    Log.Message($"[Realistic Trade] Tried to FindPath to a different layer {settlement.Tile}-{settlement.Tile.Layer} -> {map.Tile}-{map.Tile.Layer}");
+                    continue;
+                }
                 var daysToArrive = CaravanArrivalTimeEstimator.EstimatedTicksToArrive(settlement.Tile, map.Tile, null) / 60000f;
                 if (daysToArrive > 0 && daysToArrive <= RealisticTradeMod.settings.maxTravelDistancePeriodForTrading)
                 {
